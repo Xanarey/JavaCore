@@ -8,5 +8,6 @@ public class Area {
         a = pi * r * r;
 
         System.out.println("S = "  + a);
+        System.out.println("commit");
     }
 }
