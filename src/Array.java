@@ -17,5 +17,6 @@ public class Array {
         monthday[11] = 31;
 
         System.out.println("In May : " + monthday[4] + " days");
+        System.out.println("Commit2");
     }
 }
