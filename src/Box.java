@@ -10,6 +10,16 @@ class Box {
         this.depth = depth;
     }
 
+    Box() {
+        width = -1;
+        height = -1;
+        depth = -1;
+    }
+
+    Box(double len) {
+        width = height = depth = len;
+    }
+
     double volume() {
         return width * height * depth;
     }
