@@ -16,6 +16,12 @@ class Box {
         depth = -1;
     }
 
+    Box(Box ob) {
+        width = ob.width;
+        height = ob.height;
+        depth = ob.depth;
+    }
+
     Box(double len) {
         width = height = depth = len;
     }

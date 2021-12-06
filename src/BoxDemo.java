@@ -3,6 +3,7 @@ public class BoxDemo {
         Box box = new Box(3,4,5);
         Box box1 = new Box(4,5,6);
         Box cube = new Box(10);
+        Box cube2 = new Box(cube);
 
         double vol;
         vol = box.volume();
@@ -11,6 +12,7 @@ public class BoxDemo {
         System.out.println(vol);
         vol = cube.volume();
         System.out.println(vol);
-
+        vol = cube2.volume();
+        System.out.println(vol);
     }
 }
