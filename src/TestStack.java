@@ -12,5 +12,8 @@ public class TestStack {
         System.out.println("stack2");
         for(int i = 0; i < 10; i++)
             System.out.print(stack1.pop() + " ");
+
+        //stack.stck[3] = 100;
+        //stack.tos = 5;
     }
 }

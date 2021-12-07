@@ -7,7 +7,7 @@ public class CallByValue {
         System.out.println("a and b до вызова: " +
                 ob.a + " " + ob.b);
 
-        ob.meth(ob);
+       // ob.meth(ob);
 
         System.out.println("a and b после вызова: " +
                 ob.a + " " + ob.b);
