@@ -1,8 +1,8 @@
 class Box {
 
-    double width;
-    double height;
-    double depth;
+    private double width;
+    private double height;
+    private double depth;
 
     Box(double width, double height, double depth) {
         this.width = width;
