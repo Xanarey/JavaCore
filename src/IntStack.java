@@ -1,9 +1,32 @@
 interface IntStack {
     void push(int item);
     int pop();
+
+    default void clear() {
+        throw new UnsupportedOperationException("remove");
+    }
+
+    private int[] getElements(int n) {
+        int[] elements = new int[n];
+        for(int i = 0; i < n; i++) elements[i] = pop();
+        return elements;
+    }
+
+    default int[] skipAndPopNElements(int skip, int n) {
+        getElements(skip);
+        return getElements(n);
+    }
+
+    default int[] popNElements(int n) {
+        return getElements(n);
+    }
+
+    static int getDefaultNumber() {
+        return 0;
+    }
 }
 
-class FixedStack implements IntStack {
+class FixedStack implements IntStack{
 
     private int[] stck;
     private int tos;
@@ -40,6 +63,11 @@ class IFTest {
 
         for(int i = 0; i < 10; i++) System.out.println(fixedStack1.pop());
         for(int i = 0; i < 20; i++) System.out.println(fixedStack2.pop());
+
+
+        // fixedStack1.clear(); // TODO UnsupportedOperationException: remove
+                  // TEST EXCEPTION
+        IntStack.getDefaultNumber();
     }
 }
 
@@ -57,7 +85,7 @@ class DynStack implements IntStack {
         if(tos == stck.length - 1) {
             int[] temp = new int[stck.length * 2];
 
-            for (int i = 0; i < stck.length; i++) temp[i] = stck[i];
+            System.arraycopy(stck, 0, temp, 0, stck.length);
             stck = temp;
             stck[++tos] = item;
         }
@@ -73,6 +101,7 @@ class DynStack implements IntStack {
         else
             return stck[tos--];
     }
+
 }
 
 class IFTest3 {
@@ -101,5 +130,6 @@ class IFTest3 {
         System.out.println("Значения в статическом стеке: ");
         for(int i = 0; i < 8; i++)
             System.out.println(mystack.pop());
+
     }
 }
