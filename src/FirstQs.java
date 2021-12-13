@@ -49,6 +49,13 @@ class Car implements Cloneable {
     public Car clone() throws CloneNotSupportedException {
         return (Car) super.clone();
     }
+
+    public Car cloneAll() throws CloneNotSupportedException {
+        Car newCar = (Car) super.clone();
+        Driver driver = this.getDriver().clone();
+        newCar.setDriver(driver);
+        return newCar;
+    }
 }
 
 class Driver implements Cloneable {
