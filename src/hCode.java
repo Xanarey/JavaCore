@@ -7,8 +7,8 @@ class BlackBox {
         this.varB = varB;
     }
 
-    @java.lang.Override
-    public int hashCode() {
+
+    public int hashCoded() {
         final int prime = 31;
         int result = 1;
         result = prime * result + varA;
@@ -27,18 +27,23 @@ class BlackBox {
         BlackBox other = (BlackBox) obj;
         if (varA != other.varA)
             return false;
-        if(varB != other.varB)
-            return false;
-        return true;
+        return varB == other.varB;
     }
 }
 
 class DemoBlackBox {
     public static void main(String[] args) {
-        BlackBox b1 = new BlackBox(15,20);
+        BlackBox b1 = new BlackBox(12,20);
         BlackBox b2 = new BlackBox(15,20);
-
-        System.out.println(b1.equals(b2));
-        System.out.println(b1.hashCode() == b2.hashCode());
+        BlackBox b3 = new BlackBox(1,20);
+        BlackBox b4 = new BlackBox(5,20);
+        BlackBox b5 = new BlackBox(4,20);
+        BlackBox b6 = new BlackBox(6,20);
+        System.out.println(b1.hashCode());
+        System.out.println(b2.hashCode());
+        System.out.println(b3.hashCode());
+        System.out.println(b4.hashCode());
+        System.out.println(b5.hashCode());
+        System.out.println(b6.hashCode());
     }
 }
