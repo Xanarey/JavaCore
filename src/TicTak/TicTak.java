@@ -31,6 +31,7 @@ public class TicTak {
             String result = checkWinner();
             if(result.length() > 0) {
                 System.out.println(result);
+                printGameBoard(gameBoard);
                 break;
             }
 
@@ -46,6 +47,7 @@ public class TicTak {
             result = checkWinner();
             if(result.length() > 0) {
                 System.out.println(result);
+                printGameBoard(gameBoard);
                 break;
             }
 
@@ -70,7 +72,7 @@ public class TicTak {
             symbol = 'X';
             playerPosition.add(pos);
         } else if(user.equals("pc")) {
-            symbol = '0';
+            symbol = 'Ѻ';
             pcPosition.add(pos);
         }
 
