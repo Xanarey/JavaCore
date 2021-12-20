@@ -6,7 +6,7 @@ class Exercise_1 {
 
     public static void main(String[] args) {
         int[] a = {3, 8, 15, 17};
-        System.out.println(Arrays.toString(getValue(a, 23)));
+        System.out.println(Arrays.toString(getValue(a, 20)));
     }
 
     public static int[] getValue(int[] array, int value) {
@@ -15,12 +15,16 @@ class Exercise_1 {
         int size = array.length;
         int i, j, sum = 0;
 
-        for(j = 1; j < size - 1; j++)
-            for(i = j; i < size - 1; i++) {
+        outer:
+        for(j = 0; j < size - 1; j++)
+            for(i = j + 1; i < size; i++) {
+                System.out.print(array[j] + " ");
+                System.out.println(array[i]);
                 sum = array[j] + array[i];
                 if(sum == value) {
                     res[0] = j;
                     res[1] = j + 1;
+                    break outer;
                 }
             }
         return res;
