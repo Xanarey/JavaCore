@@ -18,8 +18,6 @@ class Exercise_1 {
         outer:
         for(j = 0; j < size - 1; j++)
             for(i = j + 1; i < size; i++) {
-                System.out.print(array[j] + " ");
-                System.out.println(array[i]);
                 sum = array[j] + array[i];
                 if(sum == value) {
                     res[0] = j;
