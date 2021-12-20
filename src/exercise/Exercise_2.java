@@ -1,12 +1,5 @@
 package exercise;
 
-//Array: [4,5,6,6,8]
-//Result: true
-
-//Array: [4,5,6,7,8]
-//Result: false
-
-
 public class Exercise_2 {
 
     public static void main(String[] args) {
