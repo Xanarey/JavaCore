@@ -8,6 +8,9 @@ public class ArrayListDemo {
     public static void main(String[] args) {
         List<Object> arraylist =  new ArrayList<>();
         List<Object> arraylist2 =  new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        List<String> list1 = new ArrayList<>();
+        List<Double> list2 = new ArrayList<>();
 
         arraylist2.add("F");
         arraylist2.add(0);
