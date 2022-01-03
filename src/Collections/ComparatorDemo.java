@@ -21,16 +21,17 @@ public class ComparatorDemo {
         Collections.sort(cars);
         System.out.println(cars);
 
-        Collections.sort(Comparator.comparing(cars));
+        Comparator maxSpeedComparator = new maxSpeedComparatorClass();
+        Collections.sort(cars, maxSpeedComparator);
         System.out.println(cars);
     }
 }
 
-class maxSpeedComparator implements Comparator<Car> {
+class maxSpeedComparatorClass implements Comparator<Car> {
 
     @Override
     public int compare(Car o1, Car o2) {
-        return o1.getMaxSpeed() - o2.getMaxSpeed();
+        return o2.getMaxSpeed() - o1.getMaxSpeed();
     }
 }
 
