@@ -15,6 +15,6 @@ public class ConstructorDemo {
     public static void main(String[] args) {
         MyFunc4 myClassCons = MyClass10::new;
         MyClass10 mc = myClassCons.func(100);
-        System.out.println("Значение val в объекте mc = " + mc.getVal());
+
     }
 }
