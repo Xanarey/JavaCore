@@ -20,7 +20,7 @@ public class RandDemo {
                 }
         }
 
-        System.out.println("Average : " + (sum/100));
+        System.out.println("ChapsStart.Average : " + (sum/100));
 
         for(int i = 0; i < 10; i++) {
             for(int x = bell[i]; x > 0; x--)

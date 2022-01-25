@@ -39,7 +39,7 @@ public class NewThread extends Thread{
 
 class ThreadGroupDemo {
     public static void main(String[] args) {
-        ThreadGroup groupA = new ThreadGroup("Group A");
+        ThreadGroup groupA = new ThreadGroup("Group ChapsStart.A");
         ThreadGroup groupB = new ThreadGroup("Group B");
 
         NewThread ob1 = new NewThread("One", groupA);

@@ -7,7 +7,7 @@ public class LinkedHashSetDemo {
         LinkedHashSet<Object> linkedHashSet = new LinkedHashSet<>();
 
         System.out.println("Adding: ");
-        linkedHashSet.add("Test");
+        linkedHashSet.add("ChapsStart.Test");
         linkedHashSet.add(1);
 
         System.out.println("Content: " + linkedHashSet);

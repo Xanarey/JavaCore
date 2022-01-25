@@ -9,7 +9,7 @@ public class InstanceOf {
         D d = new D();
 
         if(a instanceof A)
-            System.out.println("a - A");
+            System.out.println("a - ChapsStart.A");
         if(b instanceof B)
             System.out.println("b - B");
         if(c instanceof C)

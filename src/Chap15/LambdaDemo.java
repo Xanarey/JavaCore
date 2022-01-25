@@ -40,7 +40,7 @@ public class LambdaDemo {
         System.out.println(myNum.getValue());
         System.out.println(myNum.getValue());
 
-        //myNum = () -> "Test";
+        //myNum = () -> "ChapsStart.Test";
         System.out.println(myNum.getValue());
 
         NumericTest isEven = (n) -> (n % 2) == 0;

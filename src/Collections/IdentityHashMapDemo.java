@@ -12,7 +12,7 @@ public class IdentityHashMapDemo {
         identityHashMap.put(8,"Test3");
         identityHashMap.put(6,"Test1");
         identityHashMap.put(9,"Test4");
-        identityHashMap.put(7,"Test2");
+        identityHashMap.put(7,"ChapsStart.Test2");
 
         System.out.println("TEST: ");
 

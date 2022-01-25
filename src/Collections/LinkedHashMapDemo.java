@@ -9,9 +9,9 @@ public class LinkedHashMapDemo {
         LinkedHashMap<Object, String> linkedHashMap = new LinkedHashMap<>();
 
         System.out.println("Adding el: ");
-        linkedHashMap.put(3, "Test");
+        linkedHashMap.put(3, "ChapsStart.Test");
         linkedHashMap.put(4, "Test1");
-        linkedHashMap.put(5, "Test2");
+        linkedHashMap.put(5, "ChapsStart.Test2");
         linkedHashMap.put(6, "Test3");
 
         System.out.println("LL hash Map content: ");

@@ -6,7 +6,7 @@ interface DoubleNumericArrayFunc {
 
 class EmptyArrayException extends Exception {
     EmptyArrayException() {
-        super("Array is empty");
+        super("ChapsStart.Array is empty");
     }
 }
 
@@ -27,7 +27,7 @@ public class LambdaExceptionDemo {
             return sum / n.length;
         };
 
-        System.out.println("Average number: " + average.func(values));
+        System.out.println("ChapsStart.Average number: " + average.func(values));
         System.out.println(average.func(new double[0]));
     }
 }

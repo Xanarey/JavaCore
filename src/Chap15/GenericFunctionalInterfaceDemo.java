@@ -16,7 +16,7 @@ public class GenericFunctionalInterfaceDemo {
             return result;
         };
 
-        System.out.println("result str = " + reverse.func("Test"));
+        System.out.println("result str = " + reverse.func("ChapsStart.Test"));
 
         SomeFunc<Integer> fact = n -> {
             int result = 1;
