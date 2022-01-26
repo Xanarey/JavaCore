@@ -1,13 +1,13 @@
-package cloneObject;
+package Chap21;
 
 // Без Serializable - java.io.NotSerializableException
 
 import java.io.*;
 
-public class Cat implements Serializable {
+public class SerialDemoCat implements Serializable {
     private String name;
 
-    public Cat(String name) {
+    public SerialDemoCat(String name) {
         this.name = name;
     }
 
@@ -21,15 +21,15 @@ class SerializeCar {
 
     public static void main(String[] args) {
         serialize();
-        Cat cat = deserialize();
+        SerialDemoCat cat = deserialize();
         System.out.println(cat.getName());
     }
 
-    private static Cat deserialize() {
-        Cat cat = null;
+    private static SerialDemoCat deserialize() {
+        SerialDemoCat cat = null;
         try (FileInputStream fis = new FileInputStream(FILE_NAME);
         ObjectInputStream ois = new ObjectInputStream(fis)){
-            cat = (Cat)ois.readObject();
+            cat = (SerialDemoCat)ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
@@ -37,7 +37,7 @@ class SerializeCar {
     }
 
     private static void serialize() {
-        Cat cat = new Cat("Tom");
+        SerialDemoCat cat = new SerialDemoCat("Tom");
         try (FileOutputStream fs = new FileOutputStream(FILE_NAME);
              ObjectOutputStream os = new ObjectOutputStream(fs)){
             os.writeObject(cat);
