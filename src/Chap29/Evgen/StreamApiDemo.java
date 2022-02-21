@@ -18,9 +18,12 @@ public class StreamApiDemo {
 //        peekAction();
 //        getMap();
 
-        Stream<String> wordsStream = Stream.of("мама", "мыла", "раму");
-        Optional<String> sentence = wordsStream.reduce((x,y)->x + " " + y);
-        sentence.ifPresent(System.out::println);
+//        Stream<String> wordsStream = Stream.of("мама", "мыла", "раму");
+//        Optional<String> sentence = wordsStream.reduce((x,y)->x + " " + y);
+//        sentence.ifPresent(System.out::println);
+
+        System.out.println(checkLastName());
+
     }
 
     public static List<Specialist> getSpecialists() {
@@ -32,6 +35,11 @@ public class StreamApiDemo {
                 new Specialist("Kirill Kirillov", new BigDecimal(10000), Specialty.MANAGER),
                 new Specialist("Petr Petrov", new BigDecimal(10000), Specialty.MANAGER)
         );
+    }
+
+    public static boolean checkLastName() {
+        return getSpecialists().stream()
+                .anyMatch(specialist -> specialist.getName().equals("Ivdan Ivanov"));
     }
 
     public static void peekAction() {
