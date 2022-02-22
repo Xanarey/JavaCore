@@ -1,31 +1,47 @@
 package Chap22;
 
+
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.channels.SeekableByteChannel;
 import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.attribute.BasicFileAttributes;
 
 public class PathDemo {
     public static void main(String[] args) {
-        Path filepath = Paths.get("example\\test.txt");
 
-        System.out.println("FileName " + filepath.getName(1));
-        System.out.println("PathName " + filepath);
-        System.out.println("AbsPath " + filepath.toAbsolutePath());
+        int count = 0;
+        Path filePath = null;
 
-        Files.isWritable(filepath);
-        System.out.println("Файл доступен для записи");
+        try {
+            filePath = Paths.get("src/test.txt");
+        } catch (InvalidPathException e) {
+            System.out.println("file not found : " + e);
+        }
 
-        Files.isReadable(filepath);
-        System.out.println("Файл доступен для чтения");
+        try (SeekableByteChannel sk = Files.newByteChannel(filePath)) {
+
+            ByteBuffer br = ByteBuffer.allocate(128);
+
+            do {
+
+                count = sk.read(br);
+
+                if (count != -1)
+                    br.rewind();
+
+                for (int i = 0; i < count; i++)
+                    System.out.print((char)br.get());
+
+            } while (count != -1);
 
 
-//        try (BasicFileAttributes bfa = Files.readAttributes(filepath, BasicFileAttributes.class))
-//        {
-//            System.out.println("Время последней модификации: " + bfa.lastModifiedTime());
-//        } catch (IOException e) {
-//            System.out.println("Error IO " + e);
-//        }
+
+        } catch (IOException e) {
+            System.out.println("IO error ; " + e);
+        }
+
     }
 }
