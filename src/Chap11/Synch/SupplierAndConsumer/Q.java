@@ -1,40 +1,37 @@
 package Chap11.Synch.SupplierAndConsumer;
 
+import java.util.concurrent.Semaphore;
+
 public class Q {
     int n;
-    boolean valueSet = false;
 
-    synchronized int get() {
+    static Semaphore semCon = new Semaphore(0);
+    static Semaphore semProd = new Semaphore(1);
 
-        while (!valueSet) {
+    void get() {
             try {
-                wait();
+                semCon.acquire();
             } catch (InterruptedException e) {
                 System.out.println(" перехват " + e);
             }
-        }
 
         System.out.println("получено : " + n);
 
-        valueSet = false;
-        notify();
-        return n;
+        semProd.release();
+
     }
 
-    synchronized void put(int n) {
-
-        while (valueSet) {
+    void put(int n) {
             try {
-                wait();
+                semProd.acquire();
             } catch (InterruptedException e) {
                 System.out.println("перехват " + e);
             }
-        }
 
         this.n = n;
-        valueSet = true;
         System.out.println("отправлено : " + n);
-        notify();
-    }
+        semCon.release();
+        }
+
 }
 

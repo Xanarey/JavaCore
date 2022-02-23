@@ -5,13 +5,12 @@ public class Consumer implements Runnable{
 
     Consumer(Q q) {
         this.q = q;
-        new Thread(this, "Потребитель").start();
+        new Thread(this, "Потребитель");
     }
 
     @Override
     public void run() {
-        while (true) {
+        for (int i = 0; i < 20; i++)
             q.get();
-        }
     }
 }

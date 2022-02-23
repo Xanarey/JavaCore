@@ -7,8 +7,8 @@ public class SemDemo {
 
         Semaphore sem = new Semaphore(1);
 
-        new IncThread(sem, "A").start();
-        new DecThread(sem, "B").start();
+        new Thread(new IncThread(sem, "A")).start();
+        new Thread(new DecThread(sem, "B")).start();
 
     }
 }
@@ -17,7 +17,7 @@ class Shared {
     static int count = 0;
 }
 
-class IncThread extends Thread implements Runnable {
+class IncThread implements Runnable {
     String name;
     Semaphore sem;
 
@@ -50,7 +50,7 @@ class IncThread extends Thread implements Runnable {
 }
 
 
-class DecThread extends Thread implements Runnable {
+class DecThread implements Runnable {
     String name;
     Semaphore sem;
 

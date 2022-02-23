@@ -5,16 +5,12 @@ public class Producer implements Runnable{
 
     Producer(Q q) {
         this.q = q;
-        new Thread(this, "Поставщик").start();
+        new Thread(this, "Поставщик");
     }
 
     @Override
     public void run() {
-        int i = 1;
-        while (true) {
-            q.put(i++);
-            if (i == 6)
-                System.exit(0);
+        for (int i = 0; i < 20; i++)
+            q.put(i);
         }
-    }
 }
