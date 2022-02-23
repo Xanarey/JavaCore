@@ -10,7 +10,6 @@ public class NewThread implements Runnable{
         t = new Thread(this, name);
         System.out.println("New Thread: " + t);
         suspendFlag = false;
-        t.start();
     }
 
     @Override
@@ -39,5 +38,11 @@ public class NewThread implements Runnable{
     synchronized void myResume() {
         suspendFlag = false;
         notify();
+    }
+
+    public static NewThread createAndStart(String name) {
+        NewThread myThrd = new NewThread(name);
+        myThrd.t.start();
+        return myThrd;
     }
 }

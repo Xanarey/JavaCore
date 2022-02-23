@@ -3,8 +3,8 @@ package Chap11.Synch.Flags;
 public class SuspendResume {
     public static void main(String[] args) {
 
-        NewThread ob1 = new NewThread("One");
-        NewThread ob2 = new NewThread("Two");
+        NewThread ob1 = NewThread.createAndStart("One");
+        NewThread ob2 = NewThread.createAndStart("Two");
 
         try {
             System.out.println("Состояние One:                  " + ob1.t.getState());
@@ -54,4 +54,5 @@ public class SuspendResume {
         System.out.println("Главный поток завершен");
 
     }
+
 }
