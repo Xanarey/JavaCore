@@ -16,10 +16,10 @@ public class CallableDemo {
         f3 = es.submit(new Factorial(5));
 
         try {
-            System.out.println(f1.get());
-            System.out.println(f2.get());
-            System.out.println(f3.get());
-        } catch (InterruptedException | ExecutionException e) {
+            System.out.println(f1.get(10, TimeUnit.MILLISECONDS));
+            System.out.println(f2.get(10, TimeUnit.MILLISECONDS));
+            System.out.println(f3.get(10, TimeUnit.MILLISECONDS));
+        } catch (InterruptedException | ExecutionException | TimeoutException e) {
             System.out.println("Поток прерван " + e);
         }
 
