@@ -1,72 +1,66 @@
 package Chap28.Exc_1;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class Exc {
-    public static void main(String[] args) throws InterruptedException {
-        Foo foo = new Foo();
-
-        Thread A = new Thread();
-        A.start();
-        Thread B = new Thread();
-        B.start();
-        Thread C = new Thread();
-        C.start();
-
-        foo.first(A);
-        foo.third(C);
-        foo.second(B);
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
 
     }
 }
 
 class Foo {
-    public int count;
+    private int count = 0;
+    Lock lock = new ReentrantLock();
+    Condition condition = lock.newCondition();
 
-    public Foo() {
-        this.count = 1;
-    }
-
-    synchronized public void first(Runnable r)  {
-        while (count != 1) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+    public void first(Runnable r) throws InterruptedException {
+        lock.lock();
+        try {
+            while (count != 0) {
+                condition.await();
             }
+            count++;
+            r.run();
+            System.out.print("first");
+            condition.signalAll();
+        } finally {
+            lock.unlock();
         }
-        r.run();
-        count++;
-        System.out.println("first");
-        System.out.println(r);
-        notifyAll();
     }
 
-    synchronized public void second(Runnable r)  {
-        while (count != 2) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+    public void second(Runnable r) throws InterruptedException {
+        lock.lock();
+        try {
+            while (count != 1) {
+                condition.await();
             }
+            count++;
+            r.run();
+            System.out.print("second");
+            condition.signalAll();
+        } finally {
+            lock.unlock();
         }
-        r.run();
-        count++;
-        System.out.println("second");
-        System.out.println(r);
-        notifyAll();
     }
 
-    synchronized public void third(Runnable r)  {
-        while (count != 3) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+    public void third(Runnable r) throws InterruptedException {
+        lock.lock();
+        try {
+            while (count != 2) {
+                condition.await();
             }
+            r.run();
+            System.out.print("third");
+            condition.signalAll();
+        } finally {
+            lock.unlock();
         }
-        r.run();
-        System.out.println("third");
-        System.out.println(r);
-        notifyAll();
     }
+
 }
 
