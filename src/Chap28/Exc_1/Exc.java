@@ -1,65 +1,44 @@
 package Chap28.Exc_1;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.*;
 
 public class Exc {
     public static void main(String[] args) throws InterruptedException, ExecutionException {
+        Foo foo = new Foo();
+
 
     }
+
 }
 
 class Foo {
-    private int count = 0;
-    Lock lock = new ReentrantLock();
-    Condition condition = lock.newCondition();
 
-    public void first(Runnable r) throws InterruptedException {
-        lock.lock();
-        try {
-            while (count != 0) {
-                condition.await();
-            }
-            count++;
-            r.run();
-            System.out.print("first");
-            condition.signalAll();
-        } finally {
-            lock.unlock();
-        }
+        Semaphore A = new Semaphore(0);
+        Semaphore B = new Semaphore(0);
+
+
+    public void first (Runnable r) {
+        r.run();
+        System.out.print("first");
+        A.release();
     }
-
-    public void second(Runnable r) throws InterruptedException {
-        lock.lock();
+    public void second (Runnable r) {
         try {
-            while (count != 1) {
-                condition.await();
-            }
-            count++;
-            r.run();
-            System.out.print("second");
-            condition.signalAll();
-        } finally {
-            lock.unlock();
+            A.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+        System.out.print("second");
+        B.release();
     }
-
-    public void third(Runnable r) throws InterruptedException {
-        lock.lock();
+    public void third (Runnable r) {
         try {
-            while (count != 2) {
-                condition.await();
-            }
-            r.run();
-            System.out.print("third");
-            condition.signalAll();
-        } finally {
-            lock.unlock();
+            B.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+        System.out.print("third");
+        B.release();
     }
 
 }
