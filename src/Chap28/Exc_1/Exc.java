@@ -6,7 +6,9 @@ public class Exc {
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         Foo foo = new Foo();
 
-
+        Future<Void> A;
+        Future<Void> B;
+        Future<Void> C;
     }
 
 }
@@ -23,6 +25,7 @@ class Foo {
         A.release();
     }
     public void second (Runnable r) {
+        r.run();
         try {
             A.acquire();
         } catch (InterruptedException e) {
@@ -32,6 +35,7 @@ class Foo {
         B.release();
     }
     public void third (Runnable r) {
+        r.run();
         try {
             B.acquire();
         } catch (InterruptedException e) {
