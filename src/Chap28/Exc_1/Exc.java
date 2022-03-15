@@ -3,29 +3,30 @@ package Chap28.Exc_1;
 import java.util.concurrent.*;
 
 public class Exc {
-    public static void main(String[] args) throws InterruptedException, ExecutionException {
-        Foo foo = new Foo();
+    public static void main(String[] args) {
 
-        Future<Void> A;
-        Future<Void> B;
-        Future<Void> C;
+        Thread C = new Thread(Foo::third);
+        Thread A = new Thread(Foo::first);
+        Thread B = new Thread(Foo::second);
+
+        C.start();
+        B.start();
+        A.start();
     }
 
 }
 
 class Foo {
+    static Semaphore A = new Semaphore(0);
+    static Semaphore B = new Semaphore(0);
 
-        Semaphore A = new Semaphore(0);
-        Semaphore B = new Semaphore(0);
+    public static void first() {
 
-
-    public void first (Runnable r) {
-        r.run();
         System.out.print("first");
         A.release();
     }
-    public void second (Runnable r) {
-        r.run();
+    public static void second() {
+
         try {
             A.acquire();
         } catch (InterruptedException e) {
@@ -34,8 +35,8 @@ class Foo {
         System.out.print("second");
         B.release();
     }
-    public void third (Runnable r) {
-        r.run();
+    public static void third() {
+
         try {
             B.acquire();
         } catch (InterruptedException e) {
@@ -44,6 +45,5 @@ class Foo {
         System.out.print("third");
         B.release();
     }
-
 }
 

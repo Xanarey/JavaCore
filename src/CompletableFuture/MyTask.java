@@ -10,20 +10,20 @@ import java.util.stream.IntStream;
 import static java.util.stream.Collectors.toList;
 
 public class MyTask {
-    private final int dutarion;
+    private final int duration;
 
-    public MyTask(int dutarion) {
-        this.dutarion = dutarion;
+    public MyTask(int duration) {
+        this.duration = duration;
     }
 
     public int calculate() {
         System.out.println(Thread.currentThread().getName());
         try {
-            Thread.sleep(dutarion * 1000L);
+            Thread.sleep(duration * 1000L);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return dutarion;
+        return duration;
     }
 }
 
