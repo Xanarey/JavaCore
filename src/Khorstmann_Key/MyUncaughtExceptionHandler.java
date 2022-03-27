@@ -37,5 +37,6 @@ class CaptureUncaughtException {
     public static void main(String[] args) {
         ExecutorService es = Executors.newCachedThreadPool(new HandlerThreadFactory());
         es.execute(new ExceptionThread2());
+        es.shutdown();
     }
 }
