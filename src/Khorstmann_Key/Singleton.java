@@ -2,7 +2,7 @@ package Khorstmann_Key;
 
 public class Singleton {
 
-    private static Singleton instanse;
+    private static volatile Singleton instance;
     private int foo;
     private String bar;
 
@@ -11,11 +11,14 @@ public class Singleton {
         bar = "test";
     }
 
-    public synchronized static Singleton getInstance() {
-        if (instanse == null) {
-            instanse = new Singleton();
+    public static Singleton getInstance() {
+        if (instance == null) {
+            synchronized (Singleton.class) {
+                if (instance == null)
+                    instance = new Singleton();
+            }
         }
-        return instanse;
+        return instance;
     }
 
 }
