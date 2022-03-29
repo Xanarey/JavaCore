@@ -15,7 +15,7 @@ public class SequenceGeneratorBroken {
 
     public static void main(String[] args) throws InterruptedException {
         List<Thread> threads = new ArrayList<>();
-        Semaphore semaphore = new Semaphore(2);
+        Semaphore semaphore = new Semaphore(2, true);
 
         for (int j = 0; j < 5; j++) {
             DemoThread thread = new DemoThread(semaphore);
@@ -59,7 +59,7 @@ public class SequenceGeneratorBroken {
                 semaphore.acquire();
                 try {
                     System.out.println(getName() + "semaphore.acquire");
-                    Thread.sleep(5000L);
+                    Thread.sleep(1000L);
                 } finally {
                     System.out.println(getName() + "semaphore.release");
                     semaphore.release();
