@@ -1,23 +1,23 @@
-package OOP.creational.abstractFactory.banking;
+package OOP.creational.abstractFactory.webSite;
 
 import OOP.creational.abstractFactory.Developer;
 import OOP.creational.abstractFactory.ProjectTeamFactory;
 import OOP.creational.abstractFactory.Tester;
 import OOP.creational.abstractFactory.projectManager;
 
-public class BankingTeamFactory implements ProjectTeamFactory {
+public class WebSiteTeamFactory implements ProjectTeamFactory {
     @Override
     public Developer getDeveloper() {
-        return new JavaDeveloper();
+        return new PhpDeveloper();
     }
 
     @Override
     public Tester getTester() {
-        return new QATester();
+        return new ManualTester();
     }
 
     @Override
     public projectManager getProjectManager() {
-        return new PMBanking();
+        return new WebSitePM();
     }
 }
