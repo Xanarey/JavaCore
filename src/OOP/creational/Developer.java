@@ -1,4 +1,4 @@
-package OOP.creational.abstractFactory;
+package OOP.creational;
 
 public interface Developer {
     void writeCode();
