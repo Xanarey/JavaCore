@@ -11,6 +11,9 @@ public class BarDemo {
         new Thread(new MyThread2(cyclicBarrier, "A")).start();
         new Thread(new MyThread2(cyclicBarrier, "B")).start();
         new Thread(new MyThread2(cyclicBarrier, "C")).start();
+        new Thread(new MyThread2(cyclicBarrier, "D")).start();
+        new Thread(new MyThread2(cyclicBarrier, "E")).start();
+        new Thread(new MyThread2(cyclicBarrier, "F")).start();
     }
 }
 
