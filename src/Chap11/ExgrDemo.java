@@ -1,8 +1,7 @@
 package Chap11;
 
 import java.util.ArrayList;
-import java.util.concurrent.Exchanger;
-import java.util.concurrent.Phaser;
+import java.util.concurrent.*;
 
 public class ExgrDemo {
 
@@ -120,10 +119,104 @@ class Bus {
     }
 }
 
+class SimpleExec {
+    public static void main(String[] args) {
+        CountDownLatch count1 = new CountDownLatch(5);
+        CountDownLatch count2 = new CountDownLatch(5);
+        CountDownLatch count3 = new CountDownLatch(5);
+        CountDownLatch count4 = new CountDownLatch(5);
+        ExecutorService es = Executors.newFixedThreadPool(2);
 
+        System.out.println("Запуск потоков");
 
+        es.execute(new MyThread3(count1, "A"));
+        es.execute(new MyThread3(count2, "B"));
+        es.execute(new MyThread3(count3, "C"));
+        es.execute(new MyThread3(count4, "D"));
 
+        try {
+            count1.await();
+            count2.await();
+            count3.await();
+            count4.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
+        es.shutdown();
+        System.out.println("Завершение потоков");
+    }
+}
+
+class MyThread3 implements Runnable {
+    String name;
+    CountDownLatch count;
+
+    public MyThread3(CountDownLatch count, String name) {
+        this.name = name;
+        this.count = count;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println(name + " : " + i);
+            count.countDown();
+        }
+    }
+}
+
+class CallableDemo {
+    public static void main(String[] args) {
+
+    }
+}
+
+class Sum implements Callable<Integer> {
+    int stop;
+
+    public Sum(int stop) {
+        this.stop = stop;
+    }
+
+    @Override
+    public Integer call() throws Exception {
+        int sum = 0;
+        for (int i = 1; i <= stop; i++)
+            sum += i;
+        return sum;
+    }
+}
+
+class Hypot implements Callable<Double> {
+    double side1, side2;
+
+    public Hypot(double side1, double side2) {
+        this.side1 = side1;
+        this.side2 = side2;
+    }
+
+    @Override
+    public Double call() throws Exception {
+        return Math.sqrt((side1 * side1) + (side2 * side2));
+    }
+}
+
+class Factorial implements Callable<Integer> {
+    int stop;
+
+    public Factorial(int stop) {
+        this.stop = stop;
+    }
+
+    @Override
+    public Integer call() throws Exception {
+        int fact = 1;
+        for (int i = 2; i <= stop; i++)
+            fact *= 1;
+        return fact;
+    }
+}
 
 
 
