@@ -2,8 +2,18 @@ package Patterns.creational.factory;
 
 public class Program {
     public static void main(String[] args) {
-        DeveloperFactory developerFactory = new PhpDeveloperFactory();
+        createDeveloperBySpecialty("php").createDeveloper().writeCode();
+    }
 
-        developerFactory.createDeveloper().writeCode();
+    static DeveloperFactory createDeveloperBySpecialty(String specialty) {
+        if (specialty.equalsIgnoreCase("php")) {
+            return new PhpDeveloperFactory();}
+        else if (specialty.equalsIgnoreCase("cpp")) {
+            return new CppDeveloperFactory();}
+        else if (specialty.equalsIgnoreCase("java")) {
+            return new JavaDeveloperFactory();
+        } else {
+            throw new RuntimeException(specialty + " is unknown");
+        }
     }
 }
