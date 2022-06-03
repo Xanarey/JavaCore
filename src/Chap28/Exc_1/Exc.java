@@ -1,72 +1,49 @@
 package Chap28.Exc_1;
 
+import java.util.concurrent.*;
+
 public class Exc {
-    public static void main(String[] args) throws InterruptedException {
-        Foo foo = new Foo();
+    public static void main(String[] args) {
 
-        Thread A = new Thread();
-        A.start();
-        Thread B = new Thread();
-        B.start();
-        Thread C = new Thread();
+        Thread C = new Thread(Foo::third);
+        Thread A = new Thread(Foo::first);
+        Thread B = new Thread(Foo::second);
+
         C.start();
-
-        foo.first(A);
-        foo.third(C);
-        foo.second(B);
-
+        B.start();
+        A.start();
     }
+
 }
 
 class Foo {
-    public int count;
+    static Semaphore A = new Semaphore(0);
+    static Semaphore B = new Semaphore(0);
 
-    public Foo() {
-        this.count = 1;
+    public static void first() {
+
+        System.out.print("first");
+        A.release();
     }
+    public static void second() {
 
-    synchronized public void first(Runnable r)  {
-        while (count != 1) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        try {
+            A.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        r.run();
-        count++;
-        System.out.println("first");
-        System.out.println(r);
-        notifyAll();
+        System.out.print("second");
+        B.release();
     }
+    public static void third() {
 
-    synchronized public void second(Runnable r)  {
-        while (count != 2) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        try {
+            B.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        r.run();
-        count++;
-        System.out.println("second");
-        System.out.println(r);
-        notifyAll();
-    }
-
-    synchronized public void third(Runnable r)  {
-        while (count != 3) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        r.run();
-        System.out.println("third");
-        System.out.println(r);
-        notifyAll();
+        System.out.print("third");
+        B.release();
     }
 }
 
