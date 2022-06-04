@@ -1,6 +1,6 @@
-package MyPatterns.AbstractFactory.searchSystem;
+package MyPatterns.creational.AbstractFactory.searchSystem;
 
-import MyPatterns.AbstractFactory.ProjectManager;
+import MyPatterns.creational.AbstractFactory.ProjectManager;
 
 public class ProjectManagerSearchSystem implements ProjectManager {
     @Override

@@ -1,6 +1,6 @@
-package MyPatterns.AbstractFactory;
+package MyPatterns.creational.AbstractFactory;
 
-import MyPatterns.AbstractFactory.searchSystem.SearchTeamFactory;
+import MyPatterns.creational.AbstractFactory.searchSystem.SearchTeamFactory;
 
 public class ProjectSearchSystem {
     public static void main(String[] args) {

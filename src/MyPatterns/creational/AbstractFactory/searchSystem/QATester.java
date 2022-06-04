@@ -1,6 +1,6 @@
-package MyPatterns.AbstractFactory.searchSystem;
+package MyPatterns.creational.AbstractFactory.searchSystem;
 
-import MyPatterns.AbstractFactory.Tester;
+import MyPatterns.creational.AbstractFactory.Tester;
 
 public class QATester implements Tester {
     @Override

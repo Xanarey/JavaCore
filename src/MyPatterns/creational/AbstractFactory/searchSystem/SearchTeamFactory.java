@@ -1,9 +1,9 @@
-package MyPatterns.AbstractFactory.searchSystem;
+package MyPatterns.creational.AbstractFactory.searchSystem;
 
-import MyPatterns.AbstractFactory.Developer;
-import MyPatterns.AbstractFactory.ProjectManager;
-import MyPatterns.AbstractFactory.ProjectTeamFactory;
-import MyPatterns.AbstractFactory.Tester;
+import MyPatterns.creational.AbstractFactory.Developer;
+import MyPatterns.creational.AbstractFactory.ProjectManager;
+import MyPatterns.creational.AbstractFactory.ProjectTeamFactory;
+import MyPatterns.creational.AbstractFactory.Tester;
 
 public class SearchTeamFactory implements ProjectTeamFactory {
     @Override

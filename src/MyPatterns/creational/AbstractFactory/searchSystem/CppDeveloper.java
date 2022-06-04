@@ -1,6 +1,6 @@
-package MyPatterns.AbstractFactory.searchSystem;
+package MyPatterns.creational.AbstractFactory.searchSystem;
 
-import MyPatterns.AbstractFactory.Developer;
+import MyPatterns.creational.AbstractFactory.Developer;
 
 public class CppDeveloper implements Developer {
     @Override

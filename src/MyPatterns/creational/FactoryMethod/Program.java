@@ -1,4 +1,4 @@
-package MyPatterns.FactoryMethod;
+package MyPatterns.creational.FactoryMethod;
 
 public class Program {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package MyPatterns.FactoryMethod;
+package MyPatterns.creational.FactoryMethod;
 
 public class Porshe implements Car{
     @Override

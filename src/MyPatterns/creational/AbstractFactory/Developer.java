@@ -1,4 +1,4 @@
-package MyPatterns.AbstractFactory;
+package MyPatterns.creational.AbstractFactory;
 
 public interface Developer {
     void writeCode();

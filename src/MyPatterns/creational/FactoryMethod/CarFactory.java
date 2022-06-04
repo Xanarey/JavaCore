@@ -1,4 +1,4 @@
-package MyPatterns.FactoryMethod;
+package MyPatterns.creational.FactoryMethod;
 
 public interface CarFactory {
     Car createCar();
