@@ -2,16 +2,12 @@ package MyPatterns.structural.Facade;
 
 public class SprintRunner {
     public static void main(String[] args) {
-        Job job = new Job();
-        job.doJob();
-        Developer developer = new Developer();
-        BugTracker bugTracker = new BugTracker();
+        Workflow workflow = new Workflow();
 
-        bugTracker.startSprint();
-        developer.doJobBeforeDeadLine(bugTracker);
+        workflow.solveProblems();
 
-        bugTracker.finishSprint();
-        developer.doJobBeforeDeadLine(bugTracker);
+        workflow.bugTracker.finishSprint();
+        workflow.developer.doJobBeforeDeadLine(workflow.bugTracker);
 
     }
 }
