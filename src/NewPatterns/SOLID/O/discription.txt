@@ -1,0 +1,27 @@
+Принцип открытости/закрытости (Open-closed Principle)
+
+
+Программные (классы, модули, функции и прочее) должны быть открыты для расширения,
+но закрыты для модификации.
+Должны быть расширяемыми без изменения своего содержимого.
+
+Если строго соблюдать этот принцип,
+то можно регулировать поведение кода без изменения самого исходника.
+
+public class Client {
+    private final Server server;
+
+    public Client(Server server) {
+        this.server = server;
+    }
+
+    String sendRequest(String request) {
+        return server.processRequest(request);
+    }
+}
+
+public final class Server {
+    String processRequest(String request) {
+        return request + "Processed";
+    }
+}
